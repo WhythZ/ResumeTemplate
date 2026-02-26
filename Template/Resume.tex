@@ -1,0 +1,143 @@
+\documentclass[11pt, a4paper]{article}
+
+% 基础宏包
+\usepackage[UTF8, scheme=plain]{ctex}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+% 取消中英文间空格
+\xeCJKsetup{CJKecglue={}}
+% 英文单词断行设置
+\emergencystretch 3em % 紧急情况下允许额外拉伸
+\hyphenpenalty=500 % 降低断字惩罚，使英文单词更容易
+% 页面四周间距
+\geometry{left=0.8cm, right=0.8cm, top=0.1cm, bottom=0.1cm}
+\pagestyle{empty}
+
+% 各类文本颜色
+\definecolor{highlightColor}{RGB}{255, 127, 0} % 强调颜色
+\definecolor{linkColor}{RGB}{84, 138, 255} % 链接颜色
+\definecolor{titleColor}{RGB}{0, 82, 217} % 一级标题颜色
+% 文本强调样式
+\newcommand{\emphasize}[1]{\textbf{\color{highlightColor}#1}} % 加粗与上色，用自定义命令\emphasize替代\textbf的单纯加粗
+% 链接文本样式
+\hypersetup{
+    colorlinks=false, % 关闭彩色链接模式，启用边框样式，以显示下划线，但这样链接文本颜色就没了
+    pdfborderstyle={/S/U/W 1.0}, % /W后跟下划线粗细
+    urlbordercolor=linkColor,
+    linkbordercolor=linkColor,
+    citebordercolor=linkColor,
+}
+\let\oldhref\href
+\renewcommand{\href}[2]{\oldhref{#1}{\color{linkColor}#2}} % 重写\href命令，让链接文本也能显示特定颜色
+% 一级标题样式
+\titleformat{\section}{\large\bfseries\color{titleColor}}{}{0em}{} % 此处末尾添加[\titlerule]可使得每个大标题下方有一条同色分割线
+\titlespacing{\section}{0pt}{0.8ex}{0.6ex}
+% 二级标题样式
+\newcommand{\entryheader}[2]{
+    \noindent\textbf{#1} \hfill \textbf{#2} \par
+} % 普通二级标题（左名称、右日期）
+\newcommand{\entryheaderwithlogo}[3]{
+    \noindent\textbf{#1} \hspace{0.0em} \raisebox{-0.1em}{\includegraphics[height=1.0em]{#3}} \hfill \textbf{#2} \par
+} % 带Logo的二级标题（左名称、中Logo、右日期）
+\newcommand{\linkitem}[1]{
+    \vspace{0.1em}
+    \noindent{\normalsize\color{linkColor}\faIcon{link}}\ \href{#1}{\normalsize #1} \par
+    \vspace{0.3em}
+} % 二级标题下方的伴随链接
+
+\begin{document} % 标记文档开始
+\setstretch{0.4} % 设置全局行距
+
+% 页头区域
+\noindent % 确保minipage不会被首行缩进推向右侧导致对不齐
+\begin{minipage}[t]{0.90\textwidth}
+    \vspace{0pt} % 强制顶端对齐的锚点
+    {\LARGE\bfseries 你滴名字} \\[0.5em]
+    \normalsize
+    \faIcon{phone} 10000000000 \space
+    \faIcon{envelope} \href{mailto:myemial@qq.com}{myemial@qq.com} \space
+    \faIcon{weixin} mywechat \space
+    \faIcon{link} \href{https://myblog.address}{myblog.address} \space
+    \faIcon{github} \href{https://github.com/mygithubid}{mygithubid} \space
+    \faIcon{steam} \href{https://steamcommunity.com/id/mysteamid/}{mysteamid} \space
+\end{minipage}
+\vspace{0.4em}
+\hrule height 0.8pt % 分割页头和正式内容的横线，稍微加粗
+\vspace{0.3em}
+
+\section{教育经历}
+\entryheader{你滴大学名字}{2077.09 - 2081.07}
+\noindent 你滴专业名字 \hfill 本科 \\
+GPA 4.0/4.0, CET-6 999
+\vspace{0.3em}
+
+\section{实习经历}
+\entryheaderwithlogo{公司公司公司公司-岗位岗位岗位岗位-项目项目项目项目}{2077.01 - 2077.01}{Icons/tencent.png}
+\begin{itemize}[nosep, leftmargin=1.2em, topsep=0.2em]
+    \item 文本文本文本文本\emphasize{突出内容}文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本\emphasize{突出内容}文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本\emphasize{突出内容}文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本\emphasize{突出内容}文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+\end{itemize}
+\vspace{0.3em}
+\entryheaderwithlogo{公司公司公司公司-岗位岗位岗位岗位-项目项目项目项目}{2077.01 - 2077.01}{Icons/tencent.png}
+\begin{itemize}[nosep, leftmargin=1.2em, topsep=0.2em]
+    \item 文本文本文本文本\emphasize{突出内容}文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本\emphasize{突出内容}文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本\emphasize{突出内容}文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本\emphasize{突出内容}文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+\end{itemize}
+\vspace{0.3em}
+
+\section{项目经验}
+\entryheader{你滴项目名称一长串字 (独立开发)}{2077.01 - 2077.01}
+\linkitem{https://github.com/mygithubid/myproject}
+\begin{itemize}[nosep, leftmargin=1.2em]
+    \item 文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+\end{itemize}
+\vspace{0.3em}
+\entryheader{你滴项目名称一长串字 (独立开发)}{2077.01 - 2077.01}
+\linkitem{https://github.com/mygithubid/myproject}
+\begin{itemize}[nosep, leftmargin=1.2em]
+    \item 文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+\end{itemize}
+\vspace{0.3em}
+\entryheader{你滴项目名称一长串字 (独立开发)}{2077.01 - 2077.01}
+\linkitem{https://github.com/mygithubid/myproject}
+\begin{itemize}[nosep, leftmargin=1.2em]
+    \item 文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+\end{itemize}
+\vspace{0.6em}
+
+\section{随便写点}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+    \textbf{随便写点:} C++, C++, C++, C++, C++, C++ & \textbf{随便写点:} C++, C++, C++, C++, C++, C++ \\
+    \textbf{随便写点:} C++, C++, C++, C++, C++, C++ & \textbf{随便写点:} C++, C++, C++, C++, C++, C++
+\end{tabularx}
+\vspace{0.3em}
+
+\section{随便写点}
+\begin{itemize}[nosep, leftmargin=1.2em] % nosep表示分点正文上下无间距，可用例如itemsep=1.0em来增大间距
+    \item 文本文本文本文本\href{https://www.bilibili.com/}{句内链接}文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本\href{https://www.bilibili.com/}{句内链接}文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    \item 文本文本文本文本\href{https://www.bilibili.com/}{句内链接}文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+\end{itemize}
+\vspace{0.3em}
+
+\end{document} % 标记文档结束
